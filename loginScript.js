@@ -36,7 +36,7 @@
             // Set an authentication token in local storage
             localStorage.setItem(authTokenKey, "yourAuthToken");
 
-            // Redirect to the main page
+            // Redirect to the main page here
             window.location.href = "dashboard.html"; // Replace with your dasboard page URL
         } else {
             alert("Invalid credentials. Please try again.");
