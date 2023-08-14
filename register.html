@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Registration</title>
+    <link rel="stylesheet" href="./register.css">
+</head>
+<body>
+
+<div class="register-container">
+    <h1>Employee Registration</h1>
+    <form class="register-form">
+        <div class="form-group">
+            <label for="firstname">First Name</label>
+            <input type="text" id="firstname" name="firstname" required>
+        </div>
+        <div class="form-group">
+            <label for="lastname">Last Name</label>
+            <input type="text" id="lastname" name="lastname" required>
+        </div>
+        <div class="form-group">
+            <label for="department">Department</label>
+            <select id="department" name="department" required>
+                <option value="" selected disabled>Select Department</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Science Laboratory Technology">Science Laboratory Technology</option>
+                <option value="Art and Design">Art and Design</option>
+                <option value="Urban and Regional Planning">Urban and Regional Planning</option>
+                <option value="Accounting">Accounting</option>
+                <option value="Public Administration">Public Administration</option>
+                <option value="Business Administration">Business Administration</option>
+                <option value="Office Technology and Management Studies">Office Technology and Management Studies</option>
+                <option value="Mass Communication">Mass Communication</option>
+                <option value="Computer Engineering">Computer Engineering</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="role">Role</label>
+            <select id="role" name="role" required>
+                <option value="" selected disabled>Select Role</option>
+                <option value="Software Engineer">Software Engineer</option>
+                <option value="Biotechnologist">BioTechnologist</option>
+                <option value="User Interface Designer">User Interface Designer</option>
+                <option value="Estate Planner">Estate Planner</option>
+                <option value="Auditor">Auditor</option>
+                <option value="Public Affairs Specialist">Public Affairs Specialist</option>
+                <option value="Business Developer">Business Developer</option>
+                <option value="Office Technologist">Office Technologist</option>
+                <option value="Media Specialist and Communication Expert">Media Specialist and Communication Expert</option>
+                <option value="System Engineer">System Engineer</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+</div>
+      <script src="registerScript.js" defer></script>
+</body>
+</html>

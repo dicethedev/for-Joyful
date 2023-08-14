@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Record System </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <script src="script.js" defer></script>
+    <script src="attendance-script.js" defer></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<body data-theme="dark">
+
+
+    <header>
+        <nav class="nav-bar">
+            <img src="image/Screenshot_20230807_170225.png">
+            <div class="theme-switcher">
+                <input type="checkbox" id="switcher" />
+                <label for="switcher"></label>
+            </div>
+            <div class="logout-button">
+                <button id="logoutButton">Logout</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="home-page">
+            <div class="side-bar">
+                <ul class="side-menu">
+                    <li class="tab active">Dashboard</li>
+                    <li class="tab">Attendance</li>
+                    <li class="tab">Employees</li>
+                </ul>
+            </div>
+
+            <div class="body active">
+                <div class="header">
+                    <p>Welcome to Employee Record System</p>
+                    <div class="header-img">
+                    <img src="image/Welcome.jpg" alt="Welcome Image">
+                    </div>
+                </div>
+                <div class="dashboard-info">
+                    <p>This is the Employee Record System dashboard. You can manage employee attendance and details here.</p>
+                    <p>Use the side menu to navigate between different sections.</p>
+                </div>
+            </div>
+           
+            <!-- Take Attendance -->
+       <div class="body">
+          <div class="header">
+              <p>Take Attendance</p>
+              <button class="add-attendance">+ Add new</button>
+          </div>
+          <div class="form">
+              <p>Show</p>
+              <p>Search:
+                  <input type="text">
+              </p>
+          </div>
+          <table id="attendanceTable">
+              <tr>
+                  <th>Serial No.</th>
+                  <th>Employee name</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Notes</th>
+              </tr>
+          </table>
+    
+      <!-- Modal -->
+      <div id="attendanceFormModal" class="modal">
+        <span class="overlay"></span>
+        <div class="formHead">
+            <h2>Take Attendance</h2>
+            <span class="material-symbols-outlined closeModal">X</span>
+        </div>
+
+        <label for="employeeName">Employee Name</label>
+        <input class="input" type="text" id="employeeName" placeholder="Employee Name"><br><br>
+
+        <label for="attendanceDate">Date</label>
+        <input class="input" type="date" id="attendanceDate"><br><br>
+
+        <label for="attendanceTime">Time</label>
+        <input class="input" type="time" id="attendanceTime"><br><br>
+
+        <label for="attendanceNotes">Notes</label>
+        <input class="input" type="text" id="attendanceNotes" placeholder="Notes"><br><br>
+
+        <button class="SubmitA">Submit Attendance</button><br>
+      </div>
+      <!-- End Modal -->
+      </div>
+
+            <!-- Employees -->
+            <div class="body">
+                <div class="header">
+                    <p>Employees</p>
+                    <button class="add">+ Add new</button>
+                </div>
+
+                <table class="table">
+                    <tr>
+                        <th>Employee No.</th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Department</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                    </tr>
+                </table>
+
+                
+                <form action="">
+                    <span class="overlay"></span>
+                    <div class="formHead">
+                        <h2>REGISTER</h2>
+                        <span class="material-symbols-outlined">X</span>
+                    </div>
+
+                    <label for="firstname">First Name</label>
+                    <input class="input" type="text" id="firstname" placeholder="First Name"><br><br>
+
+                    <label for="lastname">Last Name</label>
+                    <input class="input" type="text" id="lastname" placeholder="Last Name"><br><br>
+
+
+                    <label for="department">Department</label>
+                    <select class="input" id="department">
+                        <option value="" selected disabled>Select Department</option>
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Science Laboratory Technology">Science Laboratory Technology</option>
+                        <option value="Art and Design">Art and Design</option>
+                        <option value="Urban and Regional Planning">Urban and Regional Planning</option>
+                        <option value="Accounting">Accounting</option>
+                        <option value="Public Administration">Public Administration</option>
+                        <option value="Business Administration">Business Administration</option>
+                        <option value="Office Technology and Management Studies">Office Technology and Management Studies</option>
+                        <option value="Mass Communication">Mass Communication</option>
+                        <option value="Computer Engineering">Computer Engineering</option>
+                    </select><br><br>
+
+
+                    <label for="role">Role</label>
+                    <select class="input" id="role">
+                        <option value="" selected disabled>Select Role</option>
+                        <option value="Software Engineer">Software Engineer</option>
+                        <option value="Biotechnologist">BioTechnologist</option>
+                        <option value="User Interface Designer">User Interface Designer</option>
+                        <option value="Estate Planner">Estate Planner</option>
+                        <option value="Auditor">Auditor</option>
+                        <option value="Public Affairs Specialist">Public Affairs Specialist</option>
+                        <option value="Business Developer">Business Developer</option>
+                        <option value="Office Technologist">Office Technologist</option>
+                        <option value="Media Specialist and Communication Expert">Media Specialist and Communication Expert</option>
+                        <option value="System Engineer">System Engineer</option>
+                    </select><br><br>
+
+                    <button class="Submit">Submit</button><br>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+</body>
+
+</html>
