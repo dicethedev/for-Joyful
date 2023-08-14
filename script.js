@@ -65,15 +65,18 @@ const updateTable = () => {
     ];
 
     localData.forEach(data => {
-        let result = '';
-        for (const key in data) {
-            if (key !== "password") {
-                result += `<td>${data[key]}</td>`;
+        if (!data.hasOwnProperty("attendanceData")) { // Exclude rows with attendanceData
+            let result = '';
+            for (const key in data) {
+                if (key !== "password") {
+                    result += `<td>${data[key]}</td>`;
+                }
             }
+    
+            tableContent.push(`<tr>${result}</tr>`);
         }
+    });
 
-        tableContent.push(`<tr>${result}</tr>`)
-    })
 
     // table.innerHTML = tableContent.join('');
 
