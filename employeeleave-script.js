@@ -129,8 +129,8 @@ const updateEmployeeLeaveTable = () => {
         result += `<td>${data.leaveType}</td>`;
         result += `<td>${data.startDate}</td>`;
         result += `<td>${data.endDate}</td>`;
-        result += `<td><button onclick="editEmployeeLeave(${index})">Edit</button></td>`;
-        result += `<td><button onclick="deleteEmployeeLeave(${index})">Delete</button></td>`;
+        result += `<td><button class="edit" onclick="editEmployeeLeave(${index})">Edit</button></td>`;
+        result += `<td><button class="delete" onclick="deleteEmployeeLeave(${index})">Delete</button></td>`;
         
         employeeLeaveTableContent.push(`<tr>${result}</tr>`);
     });

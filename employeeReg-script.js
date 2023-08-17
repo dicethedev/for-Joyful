@@ -116,8 +116,8 @@ const updateEmployeeTable = () => {
         result += `<td>${data.lastName}</td>`;
         result += `<td>${data.department}</td>`;
         result += `<td>${data.role}</td>`;
-        result += `<td><button onclick="editReg(${index})">Edit</button></td>`;
-        result += `<td><button onclick="deleteReg(${index})">Delete</button></td>`;
+        result += `<td><button class="edit" onclick="editReg(${index})">Edit</button></td>`;
+        result += `<td><button class="delete" onclick="deleteReg(${index})">Delete</button></td>`;
         
         employeeTableContent.push(`<tr>${result}</tr>`);
     });

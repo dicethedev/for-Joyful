@@ -114,8 +114,8 @@ const updateAttendanceTable = () => {
         result += `<td>${data.attendanceDate}</td>`;
         result += `<td>${data.attendanceTime}</td>`;
         result += `<td>${data.attendanceNotes}</td>`;
-        result += `<td><button onclick="editAttendance(${index})">Edit</button></td>`;
-        result += `<td><button onclick="deleteAttendance(${index})">Delete</button></td>`;
+        result += `<td><button class="edit" onclick="editAttendance(${index})">Edit</button></td>`;
+        result += `<td><button class="delete" onclick="deleteAttendance(${index})">Delete</button></td>`;
         
         attendanceTableContent.push(`<tr>${result}</tr>`);
     });

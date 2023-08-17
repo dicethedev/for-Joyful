@@ -18,7 +18,7 @@ body[data-theme="light"] {
 body[data-theme="dark"] {
     --color-1: #1e1f26;
     --color-4: white;
-    --color-5: aquamarine;
+    --color-5: #03a9ff;
 }
 
 .theme-switcher {
@@ -94,6 +94,18 @@ header {
     width: 100%;
     height: 100%;
 }
+
+/* ---- Action Button style ---- */
+.edit {
+   background-color: #0abe00;
+   color: white;
+}
+
+.delete {
+   background-color: #ff0303;
+   color: white;
+}
+/* ------------------------------ */
 
 /* Styles for the modal */
 .modal {

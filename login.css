@@ -8,6 +8,10 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
+    background-image: url('/image/imageHome.jpg');
+    backdrop-filter: blur(7px);
+    background-size: cover;
+    background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -47,7 +51,7 @@ input {
 }
 
 button {
-    background-color: aquamarine;
+    background-color: #03a9ff;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -57,5 +61,5 @@ button {
 }
 
 button:hover {
-    background-color: aquamarine;
+    background-color: #03a9ff;
 }
