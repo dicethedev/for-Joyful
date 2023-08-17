@@ -42,27 +42,58 @@ attendanceSubmit.addEventListener('click', (e) => {
     };
 
     const currentAttendanceLocal = getAttendanceLocal();
-    localStorage.setItem('attendanceData', JSON.stringify([...currentAttendanceLocal, attendanceFormObject]));
+    const editedIndex = parseInt(attendanceSubmit.getAttribute('data-edit-index'), 10);
+
+    if (isNaN(editedIndex)) {
+        localStorage.setItem('attendanceData', JSON.stringify([...currentAttendanceLocal, attendanceFormObject]));
+    } else {
+        currentAttendanceLocal[editedIndex] = attendanceFormObject;
+        localStorage.setItem('attendanceData', JSON.stringify(currentAttendanceLocal));
+        attendanceSubmit.removeAttribute('data-edit-index');
+    }
 
     updateAttendanceTable();
 
     hideModal();
 });
 
+// Initialize attendance data in local storage if it's not already set
+if (!localStorage.getItem('attendanceData')) {
+    localStorage.setItem('attendanceData', '[]');
+}
+
 const getAttendanceLocal = () => {
     const localAttendanceData = localStorage.getItem('attendanceData');
-
-    if (!localAttendanceData) {
-        localStorage.setItem('attendanceData', '[]');
-        return null;
-    }
     return JSON.parse(localAttendanceData);
+};
+
+const editAttendance = (index) => {
+    const localAttendanceData = getAttendanceLocal();
+    const attendanceToEdit = localAttendanceData[index];
+
+    if (!attendanceToEdit) return;
+
+    employeeNameInput.value = attendanceToEdit.employeeName;
+    attendanceDateInput.value = attendanceToEdit.attendanceDate;
+    attendanceTimeInput.value = attendanceToEdit.attendanceTime;
+    attendanceNotesInput.value = attendanceToEdit.attendanceNotes;
+
+    attendanceSubmit.textContent = 'Edit Attendance';
+    attendanceSubmit.setAttribute('data-edit-index', index);
+
+    showModal();
+};
+
+const deleteAttendance = (index) => {
+    const localAttendanceData = getAttendanceLocal();
+    localAttendanceData.splice(index, 1);
+    localStorage.setItem('attendanceData', JSON.stringify(localAttendanceData));
+    updateAttendanceTable();
 };
 
 const updateAttendanceTable = () => {
     const localAttendanceData = getAttendanceLocal();
     if (!localAttendanceData) return;
-    if (localAttendanceData.length === 0) return;
 
     let attendanceTableContent = [
         `<tr>
@@ -71,6 +102,8 @@ const updateAttendanceTable = () => {
             <th>Date</th>
             <th>Time</th>
             <th>Notes</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>`
     ];
 
@@ -81,11 +114,15 @@ const updateAttendanceTable = () => {
         result += `<td>${data.attendanceDate}</td>`;
         result += `<td>${data.attendanceTime}</td>`;
         result += `<td>${data.attendanceNotes}</td>`;
+        result += `<td><button onclick="editAttendance(${index})">Edit</button></td>`;
+        result += `<td><button onclick="deleteAttendance(${index})">Delete</button></td>`;
         
         attendanceTableContent.push(`<tr>${result}</tr>`);
     });
 
     attendanceTable.innerHTML = attendanceTableContent.join('');
 };
+
+updateAttendanceTable();
 
 

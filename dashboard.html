@@ -10,7 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <script src="script.js" defer></script>
-    <script src="attendance-script.js" defer></script>
+    <script src="employee-attendance-script.js" defer></script>
+    <script src="employeeReg-script.js" defer></script>
+    <script src="employeeleave-script.js" defer></script>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
@@ -38,6 +40,7 @@
                     <li class="tab active">Dashboard</li>
                     <li class="tab">Attendance</li>
                     <li class="tab">Employees</li>
+                    <li class="tab">Employee Leave</li>
                 </ul>
             </div>
 
@@ -75,12 +78,13 @@
                   <th>Notes</th>
               </tr>
           </table>
-    
+          
+
       <!-- Modal -->
       <div id="attendanceFormModal" class="modal">
         <span class="overlay"></span>
         <div class="formHead">
-            <h2>Take Attendance</h2>
+            <h2>TakeAttendance</h2>
             <span class="material-symbols-outlined closeModal">X</span>
         </div>
 
@@ -101,73 +105,123 @@
       <!-- End Modal -->
       </div>
 
-            <!-- Employees -->
-            <div class="body">
-                <div class="header">
-                    <p>Employees</p>
-                    <button class="add">+ Add new</button>
+
+           <!-- Employees -->
+        <div class="body">
+            <div class="header">
+                <p>Employees</p>
+                <button class="add">+ Add new</button>
+            </div>
+
+            <table class="employees-table" id="employee-table">
+                <tr>
+                    <th>Employee No.</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Department</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+            </table>
+            
+            <form action="#" class="employee-form">
+                <span class="overlay"></span>
+                <div class="formHead">
+                    <h2>REGISTER</h2>
+                    <span class="material-symbols-outlined">X</span>
                 </div>
 
-                <table class="table">
-                    <tr>
-                        <th>Employee No.</th>
-                        <th>First name</th>
-                        <th>Last name</th>
-                        <th>Department</th>
-                        <th>Role</th>
-                        <th>Action</th>
-                    </tr>
-                </table>
+                <label for="firstname">First Name</label>
+                <input class="input" type="text" id="firstname" placeholder="First Name"><br><br>
 
-                
-                <form action="">
-                    <span class="overlay"></span>
-                    <div class="formHead">
-                        <h2>REGISTER</h2>
-                        <span class="material-symbols-outlined">X</span>
-                    </div>
-
-                    <label for="firstname">First Name</label>
-                    <input class="input" type="text" id="firstname" placeholder="First Name"><br><br>
-
-                    <label for="lastname">Last Name</label>
-                    <input class="input" type="text" id="lastname" placeholder="Last Name"><br><br>
+                <label for="lastname">Last Name</label>
+                <input class="input" type="text" id="lastname" placeholder="Last Name"><br><br>
 
 
-                    <label for="department">Department</label>
-                    <select class="input" id="department">
-                        <option value="" selected disabled>Select Department</option>
-                        <option value="Computer Science">Computer Science</option>
-                        <option value="Science Laboratory Technology">Science Laboratory Technology</option>
-                        <option value="Art and Design">Art and Design</option>
-                        <option value="Urban and Regional Planning">Urban and Regional Planning</option>
-                        <option value="Accounting">Accounting</option>
-                        <option value="Public Administration">Public Administration</option>
-                        <option value="Business Administration">Business Administration</option>
-                        <option value="Office Technology and Management Studies">Office Technology and Management Studies</option>
-                        <option value="Mass Communication">Mass Communication</option>
-                        <option value="Computer Engineering">Computer Engineering</option>
-                    </select><br><br>
+                <label for="department">Department</label>
+                <select class="input" id="department">
+                    <option value="" selected disabled>Select Department</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Science Laboratory Technology">Science Laboratory Technology</option>
+                    <option value="Art and Design">Art and Design</option>
+                    <option value="Urban and Regional Planning">Urban and Regional Planning</option>
+                    <option value="Accounting">Accounting</option>
+                    <option value="Public Administration">Public Administration</option>
+                    <option value="Business Administration">Business Administration</option>
+                    <option value="Office Technology and Management Studies">Office Technology and Management Studies</option>
+                    <option value="Mass Communication">Mass Communication</option>
+                    <option value="Computer Engineering">Computer Engineering</option>
+                </select><br><br>
 
 
-                    <label for="role">Role</label>
-                    <select class="input" id="role">
-                        <option value="" selected disabled>Select Role</option>
-                        <option value="Software Engineer">Software Engineer</option>
-                        <option value="Biotechnologist">BioTechnologist</option>
-                        <option value="User Interface Designer">User Interface Designer</option>
-                        <option value="Estate Planner">Estate Planner</option>
-                        <option value="Auditor">Auditor</option>
-                        <option value="Public Affairs Specialist">Public Affairs Specialist</option>
-                        <option value="Business Developer">Business Developer</option>
-                        <option value="Office Technologist">Office Technologist</option>
-                        <option value="Media Specialist and Communication Expert">Media Specialist and Communication Expert</option>
-                        <option value="System Engineer">System Engineer</option>
-                    </select><br><br>
+                <label for="role">Role</label>
+                <select class="input" id="role">
+                    <option value="" selected disabled>Select Role</option>
+                    <option value="Software Engineer">Software Engineer</option>
+                    <option value="Biotechnologist">BioTechnologist</option>
+                    <option value="User Interface Designer">User Interface Designer</option>
+                    <option value="Estate Planner">Estate Planner</option>
+                    <option value="Auditor">Auditor</option>
+                    <option value="Public Affairs Specialist">Public Affairs Specialist</option>
+                    <option value="Business Developer">Business Developer</option>
+                    <option value="Office Technologist">Office Technologist</option>
+                    <option value="Media Specialist and Communication Expert">Media Specialist and Communication Expert</option>
+                    <option value="System Engineer">System Engineer</option>
+                </select><br><br>
 
-                    <button class="Submit">Submit</button><br>
-                </form>
+                <button  type="submit" class="submitEmployee">Submit</button><br>
+            </form>
+        </div>
+
+            <!-- Employee Leave -->
+    <div class="body">
+        <div class="header">
+            <p>Employee Leave</p>
+            <button class="add-leave">+ Add Leave</button>
+        </div>
+    
+        <table id="leaveTableEmployee" class="table">
+            <tr>
+                <th>Serial No.</th>
+                <th>Full Name</th>
+                <th>Leave Type</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+            </tr>
+        </table>
+    
+        <form class="leave-form">
+            <span class="overlay"></span>
+            <div class="formHead">
+                <h2>Apply for Leave</h2>
+                <span class="material-symbols-outlined closeModal">X</span>
             </div>
+    
+            <label for="fullname">Full Name</label>
+            <input class="input" type="text" id="fullName" placeholder="Full Name"><br><br>
+    
+            <label for="leaveType">Leave Type</label>
+            <select class="input" id="leaveType">
+                <option value="" selected disabled>Select Leave Type</option>
+                <option value="Vacation">Vacation</option>
+                <option value="Sick Leave">Sick Leave</option>
+                <option value="Maternity/Paternity Leave">Maternity/Paternity Leave</option>
+                <option value="Wedding Occasion">Wedding Occasion</option>
+                <option value="Burial Occassion">Burial Occassion</option>
+                <!-- Add more leave types here -->
+            </select><br><br>
+    
+            <label for="startDate">Start Date</label>
+            <input class="input" type="date" id="startDate"><br><br>
+    
+            <label for="endDate">End Date</label>
+            <input class="input" type="date" id="endDate"><br><br>
+    
+            <button class="SubmitLeave">Submit Leave</button><br>
+        </form>
+    </div>
+    
+
         </section>
     </main>
 </body>
