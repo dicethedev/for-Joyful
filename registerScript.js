@@ -14,10 +14,6 @@
 
         // Create user object
         const user = {
-            firstName,
-            lastName,
-            department,
-            role,
             username,
             password
         };
@@ -27,12 +23,25 @@
         users.push(user);
         localStorage.setItem('users', JSON.stringify(users));
 
+         // Create employee object
+         const employee = {
+          firstName,
+          lastName,
+          department,
+          role
+         };
+
+        // Store employee in local storage
+        const employees = JSON.parse(localStorage.getItem('employeeData')) || [];
+        employees.push(employee);
+        localStorage.setItem('employeeData', JSON.stringify(employees));
+
         // Clear form inputs
         form.reset();
 
         // Display success message
         alert('Registration successful! You can now log in.');
-
+         
         // Redirect to login page
         window.location.href = 'login.html';
     });
