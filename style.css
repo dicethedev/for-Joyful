@@ -438,4 +438,24 @@ button {
     width: 100%;
     color: var(--color-1);
     cursor: pointer;
+} 
+
+.search-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
+
+.search-word {
+  color: white;  
+  margin-right: 30px;
+  font-size: 18px;
+}
+
+.search-input {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 50%;
+    font-size: 14px;
+  }

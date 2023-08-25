@@ -8,6 +8,8 @@ const employeeFirstNameInput = document.getElementById('firstname');
 const employeeLastNameInput = document.getElementById('lastname');
 const employeeDepartmentInput = document.getElementById('department');
 const employeeRoleInput = document.getElementById('role');
+const searchInput = document.getElementById('searchInput');
+
 
 // Opening Form
 addNew.addEventListener('click', (e) => {
@@ -92,10 +94,18 @@ const deleteReg = (index) => {
     updateEmployeeTable();
 };
 
+
 const updateEmployeeTable = () => {
   
     const localEmployeeData = getEmployeeLocal();
     if (!localEmployeeData) return;
+
+    const searchTerm = searchInput.value.toLowerCase();
+
+    const filteredData = localEmployeeData.filter((data) => {
+        const fullName = `${data.firstName} ${data.lastName}`.toLowerCase();
+        return fullName.includes(searchTerm);
+    });
 
     let employeeTableContent = [
         `<tr>
@@ -109,19 +119,24 @@ const updateEmployeeTable = () => {
        </tr>`
     ];
 
-    localEmployeeData.forEach((data, index) => {
-        let result = '';
-        result += `<td>${index + 1}</td>`;
-        result += `<td>${data.firstName}</td>`;
-        result += `<td>${data.lastName}</td>`;
-        result += `<td>${data.department}</td>`;
-        result += `<td>${data.role}</td>`;
-        result += `<td><button class="edit" onclick="editReg(${index})">Edit</button></td>`;
-        result += `<td><button class="delete" onclick="deleteReg(${index})">Delete</button></td>`;
-        
-        employeeTableContent.push(`<tr>${result}</tr>`);
-    });
+    if (filteredData.length === 0) {
+        employeeTableContent.push(`<tr><td colspan="7">No matching records found</td></tr>`);
+    } else {
+        filteredData.forEach((data, index) => {
+            let result = '';
+            result += `<td>${index + 1}</td>`;
+            result += `<td>${data.firstName}</td>`;
+            result += `<td>${data.lastName}</td>`;
+            result += `<td>${data.department}</td>`;
+            result += `<td>${data.role}</td>`;
+            result += `<td><button class="edit" onclick="editReg(${index})">Edit</button></td>`;
+            result += `<td><button class="delete" onclick="deleteReg(${index})">Delete</button></td>`;
+    
+            employeeTableContent.push(`<tr>${result}</tr>`);
+        });
+    }
 
     employeeTable.innerHTML = employeeTableContent.join('');
 };
+searchInput.addEventListener('input', updateEmployeeTable);
 updateEmployeeTable();

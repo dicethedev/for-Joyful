@@ -8,6 +8,7 @@ const employeeLeaveFullNameInput = document.getElementById('fullName');
 const employeeLeaveTypeInput = document.getElementById('leaveType');
 const employeeLeaveStartDateInput = document.getElementById('startDate');
 const employeeLeaveEndDateInput = document.getElementById('endDate');
+const employeeLeaveSearchInput = document.getElementById('employeeLeaveSearchInput');
 
 //Opening Form
 addLeaveButton.addEventListener('click', () => {
@@ -110,6 +111,14 @@ const updateEmployeeLeaveTable = () => {
     const localEmployeeLeaveData = getEmployeeLeaveLocal();
     if (!localEmployeeLeaveData) return;
 
+    
+    const searchTerm = employeeLeaveSearchInput.value.toLowerCase();
+
+    const filteredData = localEmployeeLeaveData.filter((data) => {
+        const fullName = `${data.fullName}`.toLowerCase();
+        return fullName.includes(searchTerm);
+    });
+
     let employeeLeaveTableContent = [
         `<tr>
           <th>Serial No</th>
@@ -122,7 +131,10 @@ const updateEmployeeLeaveTable = () => {
        </tr>`
     ];
 
-    localEmployeeLeaveData.forEach((data, index) => {
+    if (filteredData.length === 0) {
+        employeeLeaveTableContent.push(`<tr><td colspan="7">No matching records found</td></tr>`);
+    } else {
+    filteredData.forEach((data, index) => {
         let result = '';
         result += `<td>${index + 1}</td>`;
         result += `<td>${data.fullName}</td>`;
@@ -135,7 +147,10 @@ const updateEmployeeLeaveTable = () => {
         employeeLeaveTableContent.push(`<tr>${result}</tr>`);
     });
 
+}
+
     leaveTable.innerHTML = employeeLeaveTableContent.join('');
 };
+employeeLeaveSearchInput.addEventListener('input', updateEmployeeLeaveTable);
 updateEmployeeLeaveTable();
 

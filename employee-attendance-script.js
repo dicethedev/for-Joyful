@@ -25,6 +25,7 @@ const attendanceDateInput = document.getElementById('attendanceDate');
 const attendanceTimeInput = document.getElementById('attendanceTime');
 const attendanceNotesInput = document.getElementById('attendanceNotes');
 const attendanceTable = document.getElementById('attendanceTable');
+const attendanceSearchInput = document.getElementById('attendanceSearchInput');
 
 attendanceSubmit.addEventListener('click', (e) => {
     e.preventDefault();
@@ -95,6 +96,13 @@ const updateAttendanceTable = () => {
     const localAttendanceData = getAttendanceLocal();
     if (!localAttendanceData) return;
 
+    const searchTerm = attendanceSearchInput.value.toLowerCase();
+
+    const filteredData = localAttendanceData.filter((data) => {
+        const employeeName = `${data.employeeName}`.toLowerCase();
+        return employeeName.includes(searchTerm);
+    });
+
     let attendanceTableContent = [
         `<tr>
             <th>Serial No.</th>
@@ -107,7 +115,10 @@ const updateAttendanceTable = () => {
         </tr>`
     ];
 
-    localAttendanceData.forEach((data, index) => {
+    if (filteredData.length === 0) {
+        attendanceTableContent.push(`<tr><td colspan="7">No matching records found</td></tr>`);
+    } else {
+    filteredData.forEach((data, index) => {
         let result = '';
         result += `<td>${index + 1}</td>`;
         result += `<td>${data.employeeName}</td>`;
@@ -120,9 +131,11 @@ const updateAttendanceTable = () => {
         attendanceTableContent.push(`<tr>${result}</tr>`);
     });
 
+   }
+
     attendanceTable.innerHTML = attendanceTableContent.join('');
 };
-
+attendanceSearchInput.addEventListener('input', updateAttendanceTable);
 updateAttendanceTable();
 
 
