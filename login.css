@@ -63,3 +63,16 @@ button {
 button:hover {
     background-color: #03a9ff;
 }
+
+#video {
+    width: 100%;
+    height: auto; /* Maintain the aspect ratio of the video */
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the canvas element */
+#canvas {
+    display: none; /* Hide the canvas element by default */
+}

@@ -140,3 +140,36 @@ const updateEmployeeTable = () => {
 };
 searchInput.addEventListener('input', updateEmployeeTable);
 updateEmployeeTable();
+
+
+// // Function to initialize face recognition
+// async function initializeFaceRecognition() {
+//     const videoElement = document.getElementById('video');
+//     const canvas = document.getElementById('canvas');
+//     const displaySize = { width: videoElement.width, height: videoElement.height };
+
+//     // Access the user's webcam
+//     const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+//     videoElement.srcObject = stream;
+
+//     // Load the face-api.js models
+//     await faceapi.nets.tinyFaceDetector.loadFromUri('/models');
+//     await faceapi.nets.faceLandmark68Net.loadFromUri('/models');
+//     await faceapi.nets.faceRecognitionNet.loadFromUri('/models');
+
+//     // Detect faces and draw on the canvas
+//     setInterval(async () => {
+//         const detections = await faceapi.detectAllFaces(videoElement).withFaceLandmarks().withFaceDescriptors();
+//         const resizedDetections = faceapi.resizeResults(detections, displaySize);
+//         canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+//         faceapi.draw.drawDetections(canvas, resizedDetections);
+//     }, 1000); // Adjust the interval as needed
+// }
+
+// // Call this function to initialize face recognition
+// initializeFaceRecognition();
+
+
+
+
+

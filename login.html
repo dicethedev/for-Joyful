@@ -6,12 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form</title>
     <link rel="stylesheet" href="./login.css">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/face-api.js"></script> -->
 </head>
 
 <body>
     <div class="login-container">
         <form id="loginForm" class="login-form">
             <h1>Login</h1>
+            <div class="form-group">
+                <video id="video" autoplay muted></video>
+                <canvas id="canvas"></canvas>
+            </div>
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" required>
@@ -26,6 +33,7 @@
             <button type="submit">Login</button>
         </form>
     </div>
+    <script src="./models/face-api.min.js"></script>
     <script src="loginScript.js" defer></script>
 </body>
 

@@ -1,5 +1,17 @@
 
     const form = document.querySelector('.register-form');
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+
+    // Initialize face recognition
+async function initializeFaceRecognition() {
+    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    video.srcObject = stream;
+
+    await faceapi.nets.tinyFaceDetector.loadFromUri('./models');
+    await faceapi.nets.faceLandmark68Net.loadFromUri('./models');
+    await faceapi.nets.faceRecognitionNet.loadFromUri('./models');
+}
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();

@@ -59,6 +59,13 @@
             <label for="password">Password</label>
             <input type="password" id="password" name="password" required>
         </div>
+
+        <div class="form-group">
+            <label for="video">Capture Your Face</label>
+            <video id="video" autoplay playsinline></video>
+        </div>
+        <canvas id="canvas"></canvas
+
         <button type="submit">Register</button>
     </form>
 
@@ -67,6 +74,7 @@
     </div>
    </div>
        <script src="employeeReg-script.js" defer></script>
+       <script src="./models/face-api.min.js"></script>
       <script src="registerScript.js" defer></script>
 </body>
 </html>
